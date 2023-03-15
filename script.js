@@ -78,6 +78,29 @@ function changeVolume(e) {
     } else if (volume === 0) {
         volumeIcon.classList.add('fa-solid', 'fa-volume-xmark');
     }
+    lastVolume = volume;
+}
+
+// Mute/Unmute
+function toggleMute() {
+    volumeIcon.className = '';
+    if (video.volume){
+        lastVolume = video.volume;
+        video.volume = 0;
+        volumeBar.style.width = 0;
+        volumeIcon.classList.add('fa-solid', 'fa-volume-xmark');
+        volumeIcon.setAttribute('title', 'Unmute');
+    } else {
+        let volume = lastVolume;
+        video.volume = lastVolume;
+        volumeBar.style.width = `${lastVolume * 100}%`;
+        if (volume > 0.7) {
+            volumeIcon.classList.add('fa-solid', 'fa-volume-high');
+        } else if (volume < 0.7 && volume > 0) {
+            volumeIcon.classList.add('fa-solid', 'fa-volume-low')
+        }
+        volumeIcon.setAttribute('title', 'Mute');
+    }
 }
 
 
@@ -93,5 +116,6 @@ playBtn.addEventListener('click', togglePlay);
 video.addEventListener('click', togglePlay);
 video.addEventListener('timeupdate', updateProgress);
 video.addEventListener('canplay', updateProgress);
-progressRange.addEventListener('click', setProgress)
-volumeRange.addEventListener('click', changeVolume)
+progressRange.addEventListener('click', setProgress);
+volumeRange.addEventListener('click', changeVolume);
+volumeIcon.addEventListener('click', toggleMute);
