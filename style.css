@@ -126,7 +126,8 @@ video {
 }
 
 .fa-play:hover,
-.fa-pause:hover {
+.fa-pause:hover,
+.fa-volume-high:hover {
   color: var(--primary-color);
   cursor: pointer;
 }
@@ -176,10 +177,13 @@ video {
   margin-right: 15px;
 }
 
-
+select,
+option {
+  cursor: pointer;
+}
 
 select {
-
+  background: transparent;
   color: var(--font-color);
   border: none;
   font-size: 18px;
@@ -188,7 +192,9 @@ select {
   border-radius: 5px;
 }
 
-
+select:focus {
+  outline: none;
+}
 
 select > option {
   background: rgba(0, 0, 0, 0.9);
