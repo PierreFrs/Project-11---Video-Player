@@ -18,7 +18,7 @@ body {
   font-family: Helvetica, sans-serif;
 }
 
-.fas {
+.fa-solid {
   color: var(--font-color);
   font-size: 35px;
 }
@@ -43,7 +43,6 @@ video {
 .show-controls {
   width: 100%;
   height: 30%;
-  background: dodgerblue;
   z-index: 2;
   position: absolute;
   bottom: 0;
@@ -61,7 +60,13 @@ video {
   z-index: 5;
   display: flex;
   justify-content: space-between;
+  opacity: 0;
+  transition: all 0.5s ease-out 1s;
+}
 
+.show-controls:hover .controls-container {
+  opacity: 1;
+  transition: all 0.2s ease-out;
 }
 
 
@@ -84,17 +89,21 @@ video {
 
 /* Progress Bar */
 .progress-range {
-
+  height: 8px;
+  width: calc(100% - 30px);
+  background: rgba(201, 200, 200, 0.5);
   margin: auto;
   border-radius: 10px;
   position: absolute;
   left: 15px;
   top: 15px;
   cursor: pointer;
-
+  transition: height 0.1s ease-in-out;
 }
 
-
+.progress-range:hover {
+  height: 10px;
+}
 
 .progress-bar {
   background: var(--primary-color);
@@ -213,7 +222,7 @@ select > option {
     max-width: 95vw;
   }
 
-  .fas {
+  .fa-solid {
     font-size: 20px;
   }
 
